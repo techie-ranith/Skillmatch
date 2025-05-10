@@ -11,7 +11,7 @@ services:
     # networks:
     #   - skillmatch-network
     environment:
-      - PORT=3001
+      - PORT=
   
   main_server:
     build: ./main_server
