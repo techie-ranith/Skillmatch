@@ -1,0 +1,29 @@
+{
+ "devDependencies": {
+  "@commitlint/cli": "^19.5.0",
+  "@commitlint/config-conventional": "^19.5.0",
+  "@types/react": "^19.0.10",
+  "@types/react-dom": "^19.0.4",
+  "eslint": "^9.21.0",
+  "eslint-config-next": "^15.2.0",
+  "globals": "^15.11.0",
+  "husky": "^8.0.0",
+  "typescript-eslint": "^8.11.0"
+ },
+ "scripts": {
+  "prepare": "husky install",
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start"
+ },
+ "dependencies": {
+  "@radix-ui/react-context-menu": "^2.2.6",
+  "@radix-ui/react-dialog": "^1.1.6",
+  "lucide-react": "^0.477.0",
+  "multer": "^1.4.5-lts.1",
+  "nodemailer": "^6.10.0",
+  "nodemon": "^3.1.7",
+  "react-day-picker": "^9.6.1",
+  "recharts": "^2.15.3"
+ }
+}

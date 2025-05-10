@@ -1,0 +1,62 @@
+
+services:
+  api_gateway:
+    build: ./api_gateway
+    container_name: api_gateway
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./api_gateway:/app
+      - api_gateway_node_modules:/app/node_modules
+    # networks:
+    #   - skillmatch-network
+    environment:
+      - PORT=3001
+  
+  main_server:
+    build: ./main_server
+    container_name: main_server
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./main_server:/app
+      - main_server_node_modules:/app/node_modules
+    environment:
+      - PORT=
+      - MONGO_URI=
+      - JWT_SECRET=
+      - EMAIL=
+      - EMAIL_PASSWORD=
+      - AWS_LIGHTSAIL_ENDPOINT=
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_REGION=
+      - AWS_BUCKET_NAME=
+    # networks:
+    #   - skillmatch-network
+    depends_on:
+      - api_gateway
+
+
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - client_node_modules:/app/node_modules
+    environment:
+      - NEXT_PUBLIC_SERVER_URL=
+      - EMAIL=
+      - EMAIL_PASSWORD=
+    # networks:
+    #   - skillmatch-network
+    depends_on:
+      - api_gateway
+
+volumes:
+  api_gateway_node_modules:
+  main_server_node_modules:
+  # meeting_server_node_modules:
+  client_node_modules:
